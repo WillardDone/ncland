@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>首页 &middot; 南昌土地规划管理平台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="python">
+    <meta name="author" content="DWN">
+    <link href="http://static.jx6.com/bootstrap2/css/bootstrap.min.css" 
+    rel="stylesheet"/>
+    <link href="http://static.jx6.com/bootstrap2/css/bootstrap-responsive.min.css"
+    rel="stylesheet"/>
+    <script src="/static/js/jquery-1.7.1.min.js" ></script>
+    <script src="/static/js/bootstrap.min.js" ></script>
+    <script src="/static/js/bootstrap-collapse.js" ></script>
+    <script src="/static/js/bootstrap-dropdown.js" ></script>
+    <script type="text/javascript" src="http://static.jx6.com/jx6admin/js/DateBox/WdatePicker.js"></script>
+    <script type="text/javascript">
+      $('.dropdown-toggle').dropdown();
+    </script>
+    <style type="text/css">
+    nav {
+    background-color: white;
+    background-color: #f5f5f5;
+    border-right: 1px solid #ddd;
+    border-radius: 6px;
+    margin-top: 6px;
+    margin-left: -14px;
+    float: left;
+    box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    /*width: 15%;*/
+    }
+
+    article {
+      background-color: white;
+      box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      float: left;
+      min-height: 584px;
+      _height: 584px;
+      padding: 8px;
+      margin-left: 0px;
+      margin-top: 6px;
+      left: 15.5%;
+      top: 110px;
+      _top: 116px;
+      width: 108%;
+      }
+    </style>
+  </head>
+<body>
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="{{url_for('batch.index')}}">南昌土地规划管理平台</a>
+      <div class="nav-collapse">
+        <!-- <ul class="nav">
+          <li class="active">
+            <a href="./index.html">批次管理</a>
+          </li>
+          <li class="">
+            <a href="./scaffolding.html">地块管理</a>
+          </li>
+          <li class="">
+            <a href="./base-css.html">审查表管理</a>
+          </li>
+          
+        </ul> -->
+        <ul class="nav pull-right">
+          <li class="">
+            <a href="javascript:void(0);">欢迎&nbsp;{{g.member.username}}</font></a>
+          </li>
+          <li class="">
+            <a href="{{url_for('index.loginout')}}">退出</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" style="background-color: #f5f5f5;">
+      <div class="row-fluid">
+      <nav>
+      <div class="span2">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="nav-header">
+        </li>
+        <li class="nav-header">批次管理</li>
+        <li {% if g.action == "batch.typein"%}class="active"{% endif %}>
+        <a href="{{url_for('batch.index')}}">批次录入</a>
+        </li>
+        <li {% if g.action == "batch.batchlist"%}class="active"{% endif %}>
+          <a href="{{url_for('batch.batchlist')}}">批次信息</a>
+        </li>
+        <!--  <li {% if g.action == "batch.search"%}class="active"{% endif %}>
+          <a href="/query/PC">批次查询</a>
+        </li> -->
+        <li class="nav-header">地块管理</li>
+         <li {% if g.action == "ground.index"%}class="active"{% endif %}>
+          <a href="{{url_for('ground.index')}}">地块录入</a>
+        </li>
+         <li {% if g.action == "ground.groundlist"%}class="active"{% endif %}>
+          <a href="{{url_for('ground.groundlist')}}">地块信息</a>
+        </li>
+       <!--  <li {% if g.action == "ground.search"%}class="active"{% endif %}>
+          <a href="/query/DK">地块查询</a>
+        </li> -->
+         <li class="nav-header">审查表管理</li>
+          <li {% if g.action == "examine.pre_examine_add"%}class="active"{% endif %}>
+          <a href="{{url_for('examine.pre_examine_add')}}">预审录入</a>
+        </li>
+        <li {% if g.action == "examine.preexalist"%}class="active"{% endif %}>
+          <a href="{{url_for('examine.preexalist')}}">预审信息</a>
+        </li>
+          <li {% if g.action == "examine.first_examine_add"%}class="active"{% endif %}>
+          <a href="{{url_for('examine.first_examine_add')}}">初审录入</a>
+        </li>
+        <li {% if g.action == "examine.firstexalist"%}class="active"{% endif %}>
+          <a href="{{url_for('examine.firstexalist')}}">初审信息</a>
+        </li>
+       <li class="nav-header">其他管理项</li>
+              <li {% if g.action == "member_manage"%}class="active"{% endif %}>
+          <a href="{{url_for('member.index')}}">账号管理</a>
+        </li>
+      </ul>
+      </div>
+      </nav>
+
+
+        <div class="span9">
+          <article>
+            {% block LeftContent%}
+            {% endblock %}
+          </article>
+        </div>
+      </div>
+    </div>
+
+
+</body>
+</html>

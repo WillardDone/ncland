@@ -1,0 +1,195 @@
+{% extends 'base.html'%}
+
+{% block LeftContent%}
+    
+
+
+        <form class="form-horizontal" method="post">
+      <fieldset>
+    <legend>添加地块</legend>
+        {%  if get_flashed_messages() %}
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+         <div class="alert alert-{{category}}" style="margin:0 auto;width:290px;padding:3px 5px;margin-bottom:8px;">
+        <div style="padding-left:10px;">
+        <span>{{message}}</span>
+        </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    <div class="control-group">
+      {{form.batch_name.label(class="control-label")}}
+      <div class="controls">
+        {{form.batch_name(id='select01')}}
+        <font color="red">{{form.batch_name.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.
+
+county.label(class="control-label")}}
+      <div class="controls">
+        {{form.
+
+county(id='select02')}}
+        <font color="red">{{form.
+
+county.errors[0]}}</font>
+      </div>
+    </div>
+     <div class="control-group">
+      {{form.project_type.label(class="control-label")}}
+      <div class="controls">
+        {{form.project_type(id='select03')}}
+        <font color="red">{{form.project_type.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.industry_type.label(class="control-label")}}
+      <div class="controls">
+        {{form.industry_type(id='select04')}}
+        <font color="red">{{form.industry_type.errors[0]}}</font>
+      </div>
+    </div>
+
+    <div class="control-group">
+      {{form.used_type.label(class="control-label")}}
+      <div class="controls">
+        {{form.used_type(id='select05')}}
+        <font color="red">{{form.used_type.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.ground_num.label(class="control-label")}}
+      <div class="controls">
+        {{form.ground_num(id='input01')}}
+        <font color="red">{{form.ground_num.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.project_name.label(class="control-label")}}
+      <div class="controls">
+        {{form.project_name(id='input01')}}
+        <font color="red">{{form.project_name.errors[0]}}</font>
+      </div>
+    </div>
+
+    <div class="control-group">
+      {{form.plough_area.label(class="control-label")}}
+      <div class="controls">
+        {{form.plough_area(id='plough_area')}}
+        <font color="red">单位：亩{{form.plough_area.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.other_farmland.label(class="control-label")}}
+      <div class="controls">
+        {{form.other_farmland(id='other_farmland')}}
+        <font color="red">单位：亩{{form.other_farmland.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.unused_area.label(class="control-label")}}
+      <div class="controls">
+        {{form.unused_area(id='unused_area')}}
+        <font color="red">单位：亩{{form.unused_area.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.stock_const_area.label(class="control-label")}}
+      <div class="controls">
+        {{form.stock_const_area(id='stock_const_area')}}
+        <font color="red">单位：亩{{form.stock_const_area.errors[0]}}</font>
+      </div>
+    </div> 
+    <div class="control-group">
+      {{form.increased_const_area.label(class="control-label")}}
+      <div class="controls">
+        {{form.increased_const_area(id='increased_const_area')}}
+        <font color="red">单位：亩{{form.increased_const_area.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.total_area.label(class="control-label")}}
+      <div class="controls">
+        {{form.total_area(id='total_area',class='disabled',placeholder="输入框被禁用",disabled="" )}}
+        <input type="hidden" name="total_area"/>
+        <font color="red">单位：亩{{form.total_area.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.target_area.label(class="control-label")}}
+      <div class="controls">
+         {{form.target_area(id='target_area',class='disabled',placeholder="输入框被禁用",disabled="" )}}
+         <input type="hidden" name="target_area"/>
+        <font color="red">单位：亩{{form.target_area.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="input01">指标类型：</label>
+      <div class="controls">
+        {% for type in match_target_type %}
+          <input type="checkbox" name="match_target_type" value='{{type[0]}}' />{{type[1]}}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.match_area.label(class="control-label")}}
+      <div class="controls">
+        {{form.match_area(id='match_area')}}
+        <font color="red">单位：亩{{form.match_area.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.target_type.label(class="control-label")}}
+      <div class="controls">
+        {{form.target_type(id='select06')}}
+        <font color="red">{{form.target_type.errors[0]}}</font>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      {{form.target_according.label(class="control-label")}}
+      <div class="controls">
+        {{form.target_according(id='target_according')}}
+        <font color="red">{{form.target_according.errors[0]}}</font>
+      </div>
+    </div>
+
+     <div class="form-actions">
+        <button type="submit" class="btn btn-primary">保存更改</button>
+        <input type="reset" class="btn" value="取消"/>
+    </div>
+
+      </fieldset>
+    </form>
+
+    <script type="text/javascript">
+      $("#select01").bind('change',function(){
+        var batch_id = $(this).val();
+        $.post("{{url_for('ground.getBatch')}}",
+          {'batch_id':batch_id},
+          function(data){
+            data = eval("(" + data + ")");
+            $("#select02 option").each(function(){
+              if($(this).val()==data.county){
+                $(this).attr("selected", true);
+              }else{
+                $(this).remove('selected');
+              }
+          });
+            $("#target_according").val(data.remark+"--"+String(data.id));
+      });
+      });
+
+      $("#unused_area").blur(function(){
+        var target_area = parseInt($("#plough_area").val())+parseInt($("#other_farmland").val())+parseInt($("#unused_area").val());
+        $('input[name="target_area"]').val(target_area);
+      });
+
+      $("#stock_const_area").blur(function(){
+        var total_area = parseInt($("#stock_const_area").val())+parseInt($("#target_area").val());
+        $('input[name="total_area"]').val(total_area)
+      });
+
+     </script>
+{% endblock %}

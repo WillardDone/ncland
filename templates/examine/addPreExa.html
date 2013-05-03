@@ -1,0 +1,109 @@
+{% extends 'base.html'%}
+
+{% block LeftContent%}
+    
+
+
+    <form class="form-horizontal" method="post">
+    <fieldset>
+    <legend>预审录入</legend>
+    <div class="control-group">
+      {{form.project_name.label(class="control-label")}}
+      <div class="controls">
+        {{form.project_name(id='project_name')}}
+        <font color="red">{{form.project_name.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.applicant.label(class="control-label")}}
+      <div class="controls">
+        {{form.applicant(id='applicant')}}
+        <font color="red">{{form.applicant.errors[0]}}</font>
+      </div>
+    </div>
+     <div class="control-group">
+      {{form.project_address1.label(class="control-label")}}
+      <div class="controls">
+        {{form.project_address1(id='project_address1')}}
+        {{form.project_address2(id='project_address2')}}
+        <font color="red">{{form.project_address1.errors[0]}}
+          {{form.project_address2.errors[0]}}
+        </font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.project_area.label(class="control-label")}}
+      <div class="controls">
+        {{form.project_area(id='project_area')}}
+        <font color="red">单位：亩{{form.project_area.errors[0]}}</font>
+      </div>
+    </div>
+
+    <div class="control-group">
+      {{form.increased_const_area.label(class="control-label")}}
+      <div class="controls">
+        {{form.increased_const_area(id='increased_const_area')}}
+        <font color="red">单位：亩{{form.increased_const_area.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.other_farmland.label(class="control-label")}}
+      <div class="controls">
+        {{form.other_farmland(id='other_farmland')}}
+        <font color="red">单位：亩{{form.other_farmland.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.unused_area.label(class="control-label")}}
+      <div class="controls">
+        {{form.unused_area(id='unused_area')}}
+        <font color="red">单位：亩{{form.unused_area.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.apply_time.label(class="control-label")}}
+      <div class="controls">
+        {{form.apply_time(id='apply_time')}}
+        <font color="red">{{form.apply_time.errors[0]}}</font>
+      </div>
+    </div>
+
+     <div class="control-group">
+      {{form.reply_num.label(class="control-label")}}
+      <div class="controls">
+        {{form.reply_num(id='reply_num')}}
+        <font color="red">{{form.reply_num.errors[0]}}</font>
+      </div>
+    </div>
+    <div class="control-group">
+      {{form.review_time.label(class="control-label")}}
+      <div class="controls">
+        {{form.review_time(id='review_time')}}
+        <font color="red">{{form.review_time.errors[0]}}</font>
+      </div>
+    </div>
+    
+
+    <div class="control-group">
+      {{form.examine_suggestion.label(class="control-label")}}
+      <div class="controls">
+        {{form.examine_suggestion(id='examine_suggestion')}}
+        <font color="red">{{form.examine_suggestion.errors[0]}}</font>
+      </div>
+    </div>
+   
+     <div class="form-actions">
+        <button type="submit" class="btn btn-primary">保存更改</button>
+        <input type="reset" class="btn" value="取消"/>
+    </div>
+
+      </fieldset>
+    </form>
+    <script type="text/javascript">
+    $("#apply_time,#review_time").live({
+        click:function(){WdatePicker({skin:'ext',isShowClear:false})}, 
+    });
+
+    </script>
+
+{% endblock %}

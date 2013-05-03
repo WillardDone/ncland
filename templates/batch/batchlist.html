@@ -1,0 +1,165 @@
+{% extends 'base.html'%}
+
+{% block LeftContent%}
+
+
+    {% macro render_pagination2(pagination) %}
+
+    <style type="text/css">
+        li {
+        line-height: 12px;
+        }
+        .pagination-centered .active a {
+        color: #999999;
+        cursor: default;
+        }
+         .form-horizontal .control-label {
+        float: left;
+        width: auto;
+        padding-top: 5px;
+        text-align: right;
+        }
+        /*table .span2 {
+        float: none;
+        width: 80px;
+        margin-left: 0;
+        }*/
+    </style>
+    <div class= "pagination-centered">
+        
+        <input type='hidden' name='page' id='page_no' value='{{page}}'>
+        <ul class="pager">
+            <li  {% if not pagination.has_prev %}class="active" {% endif %}>
+                <a {% if pagination.has_prev %} 
+                    href="javascript:submitform({{ pagination.page - 1}})"
+                   {% endif %}>上一页</a>&nbsp;&nbsp;
+            </li>
+        {%- for page in pagination.iter_pages() %}
+            {% if page %}
+                {% if page != pagination.page %}
+                    <li><a href="javascript:submitform({{ page }})">{{ page }}</a></li>
+                {% else %}
+                    <li class="active"><a>{{ page }}</a></li>
+                {% endif %}
+            {% else %}
+                <span>...</span>
+            {% endif %}
+        {%- endfor %}
+            
+            <li {% if not pagination.has_next %}class="active"{% endif %}>
+                &nbsp;&nbsp;
+                <a class="last" 
+                {% if pagination.has_next %}href="javascript:submitform({{ pagination.page + 1}})" {% endif %}>下一页</a>
+            </li>
+            &nbsp;&nbsp;&nbsp;共{{pagination.total_count}}条记录
+            每页显示
+            <select class="span1" style="height:18px;" onchange="submitform('{{page}}')" name="page_size">
+                <option {%if page_size == 2%}selected{%endif%} value="2">2</option>
+                <option {%if page_size == 5%}selected{%endif%} value="5">5</option>
+                <option {%if page_size == 10%}selected{%endif%}   value="10">10</option>
+                <option {%if page_size == 15%}selected{%endif%}   value="15">15</option>
+                <option {%if page_size == 20%}selected{%endif%}   value="20">20</option>
+                <option {%if page_size == 30%}selected{%endif%}   value="30">30</option>
+                <option {%if page_size == 50%}selected{%endif%}   value="50">50</option>
+            </select>条
+        </ul>
+    </div>
+    <script type="text/javascript">
+    function submitform(page){
+        $('#page_no').val(page);
+        $('#pageform').submit()
+    }
+    </script>
+
+    {% endmacro %}
+
+    
+<form name='pageform' class="form-horizontal" id ='pageform' method='POST' action='{{url_for('batch.batchlist')}}'>
+      <fieldset>
+        <legend>批次信息详细列表</legend>
+
+        <table class="table table-striped table-bordered table-condensed">
+            <tr>
+                <td>
+                    <label class="control-label" for="focusedInput">区县:</label>
+                      
+                <select name="county" class="span2">
+                    <option value="0">无</option>
+                    {% for county in countys %}
+                        <option {% if _county == county[0]%}selected{%endif%} value="{{county[0]}}">{{county[1]}}</option>
+                    {% endfor %}
+                    </select></td>
+                <td>
+                    <label class="control-label" for="focusedInput">年度:</label>
+                     <select name="year" class="span2">
+                        <option value="0">无</option>
+                        {% for year in years %}
+                            <option {% if _year == year[0]%}selected{%endif%}  value="{{year[0]}}">{{year[1]}}</option>
+                        {% endfor %}
+                    </select></td>
+                </td>
+               <!--  <td>
+                    <label class="control-label" for="focusedInput">产业类型:</label>
+                    <select name="industry_type" class="span2">
+                        <option value="0">无</option>
+                        {% for industry_type in industry_types %}
+                            <option  {% if _industry_type == industry_type[0]%}selected{%endif%}   value="{{industry_type[0]}}">{{industry_type[1]}}</option>
+                        {% endfor %}
+                    </select>
+                </td> -->
+               <!--  <td>
+                    <label class="control-label" for="focusedInput">土地用途:</label>
+                    <select name="used_type" class="span2">
+                        <option value="0">无</option>
+                        {% for used_type in used_types %}
+                            <option {% if _used_types == used_type[0]%}selected{%endif%}  value="{{used_type[0]}}">{{used_type[1]}}</option>
+                        {% endfor %}
+                    </select>
+                </td> -->
+                <td>
+                    <input type="hidden" name='action' value="search"/> 
+                    <button class="btn btn-primary">查询</button>&nbsp;&nbsp;
+                    <a  href="javascript:exportResults();">导出为Excel</a></td>
+            </tr>
+        </table>
+
+        <table class="table table-striped table-bordered table-condensed">
+            <tr>
+                <th>序号(批次编号) </th>
+                <th>建设用地批次名称  </th>
+                <th>年度  </th>
+                <th>区县  </th>
+                <th>耕地面积 </th>
+                <th>未用地面积</th>
+                <th>存量建设用地面积</th>
+                <th>新增建设用地面积</th>
+                <th>地块面积</th>
+                <th>其他农用地面积 </th>
+                <th>备注 </th>
+            </tr>
+            {% for batch in batchlist%}
+                <tr>
+                    <td>{{batch.id}}</td>
+                    <td>{{batch.batch_name}}</td>
+                    <td>{{batch.year}}</td>
+                    <td>{{batch.county|num2county}}</td>
+                    <td>{{batch.plough_area}}</td>
+                    <td>{{batch.unused_area}}</td>
+                    <td>{{batch.stock_const_area}}</td>
+                    <td>{{batch.increased_const_area}}</td>
+                    <td>{{batch.total_area}}</td>
+                    <td>{{batch.other_farmland}}</td>
+                    <td>{{batch.remark}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+      </fieldset>
+    
+
+    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" >
+          <tr>
+              {{render_pagination2(pagination)}} 
+          </tr>
+        </table>
+    </form>
+{% endblock %}

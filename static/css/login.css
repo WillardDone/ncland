@@ -1,0 +1,56 @@
+html{font-size:62.5%;font-family:Tahoma}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,input,button,textarea,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0}
+body{line-height:1.333;font-size:12px;font-size:1.2rem}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+input,textarea,select,button{font-size:12px;font-weight:normal;font-family:inherit}
+input[type="button"],input[type="submit"],select,button{cursor:pointer}
+table{border-collapse:collapse;border-spacing:0}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal}
+li{list-style:none}
+caption,th{text-align:left}
+q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}
+fieldset,img,a img,iframe{border-width:0;border-style:none}
+iframe{overflow:hidden}img{-ms-interpolation-mode:bicubic}
+textarea{resize:vertical;overflow-y:auto}
+legend{color:#000}
+a{text-decoration:none}
+a:hover{text-decoration:underline}
+hr{height:0}
+label{cursor:pointer}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body{background:#f5f9fb}
+#wrap{width:100%;height:auto}
+#login{width:497px;position:absolute;left:50%;top:50%;margin-top:-144px;margin-left:-248px;;border:solid
+#f0f4f6 10px;
+moz-border-radius:10px;
+-webkit-border-radius:10px;
+-khtml-border-radius:10px;
+border-radius:10px;
+background:#fff;
+border-bottom-colors: #e8e9ea #e7ebed #ebeff0 #eef2f4 #f0f4f6 #fff;　　
+border-top-colors: #e8e9ea #e7ebed #ebeff0 #eef2f4 #f0f4f6 #fff;　　
+border-left-colors: #e8e9ea #e7ebed #ebeff0 #eef2f4 #f0f4f6 #fff;　　
+border-right-colors: #e8e9ea #e7ebed #ebeff0 #eef2f4 #f0f4f6 #fff;
+}
+.head_land{background:url(../images/loginhead2.jpg) 0 0
+no-repeat;width:497px;height:45px; vertical-align:}
+.head_land
+h1{font-family:"微软雅黑","宋体";color:#fff;padding-left:52px;line-height:45px;font-size:20px;font-weight:normal}
+.iu{margin:39px 0 0 45px; background:url(../images/loco2.jpg) 0 0
+no-repeat;height:220px;padding-left:119px;}
+.iu div{margin-top:16px;line-height:29px;height:29px}
+.iu
+input{height:29px;line-height:29px;*+vertical-align:bottom;_vertical-align:middle;}
+.iu label{font-family:"宋体";font-size:14px;line-height:29px;height:29px;}
+.zh input{width:229px; background:url(../images/sprite.png) 0 0
+no-repeat;height:29px;border:none;padding-left:10px}
+.yz input{background:url(../images/sprite.png) 0 -29px
+no-repeat;height:29px;border:none;width:94px;padding-left:10px;margin-right:10px;}
+.yz img{ vertical-align:middle}
+.resub input{width:94px;height:33px; background:url(../images/sprite.png) 0 0
+no-repeat; border:none;
+cursor:pointer;margin-right:12px;color:#fff;font-family:"微软雅黑","宋体";font-size:18px;}
+.resub input.re{background-position:0 -58px;}
+.resub input.sub{background-position:-94px -58px;}
+.iu div.resub{margin-top:0px;margin-left:56px;height:33px;_display:inline;}
+.yz a{color:#0f7de0;}
