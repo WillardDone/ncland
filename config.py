@@ -19,14 +19,6 @@ class DefaultConfig(object):
     SQLALCHEMY_ECHO = False
     CSRF_ENABLED = False
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql://jx6:jx#t3n@61.147.97.248:54321/jx6analysis'
-
-    SECRET_KEY = 't(5hxsl0t*(^7v9dftc)k47cp0*miuic=4kw^1bm(iey#*z2-h'
-
-    MAIL_SERVER = '61.147.97.226'
-    MAIL_USERNAME = 'kf@xq5.com'
-    DEFAULT_MAIL_SENDER = 'kf@xq5.com'
-
 
     CACHE_TYPE = "memcached"
     CACHE_KEY_PREFIX = "jx6"
